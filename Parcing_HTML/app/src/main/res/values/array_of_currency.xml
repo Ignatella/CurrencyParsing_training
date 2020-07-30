@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="CURR">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>NOK</item>
+        <item>SEK</item>
+        <item>DKK</item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>CZK</item>
+        <item>HUF/100</item>
+        <item>HRK</item>
+        <item>RUB</item>
+        <item>JPY/100</item>
+        <item>AED</item>
+
+
+
+
+    </string-array>
+</resources>
