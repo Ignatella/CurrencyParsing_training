@@ -11,11 +11,7 @@ import java.util.List;
 
 public class Trace_HTML {
 
-    public static void main(String[] args) throws IOException {
-        GetData();
-    }
-
-    public static List<Currency> GetData() throws IOException {
+    public static List<Currency> ExtractCurrency() throws IOException {
         List<Currency> result = new ArrayList<Currency>();
 
         URL url = new URL("https://kantorconti.pl/ru/");
@@ -41,7 +37,7 @@ public class Trace_HTML {
         }
 
         while ((!line.equals("</table>") && (line = br.readLine()) != null)) {
-            result.add(ExtractCorruncy(br, line));
+            result.add(ExtractCurrency(br, line));
             line = br.readLine();
             line = br.readLine();
             line = br.readLine();
@@ -53,7 +49,7 @@ public class Trace_HTML {
         return result;
     }
 
-    public static Currency ExtractCorruncy(BufferedReader br, String line) throws IOException {
+    public static Currency ExtractCurrency(BufferedReader br, String line) throws IOException {
         String currency_name = Extract(line);
         line = br.readLine();
         String currency_buy = Extract(line);
@@ -64,6 +60,21 @@ public class Trace_HTML {
 
     public static String Extract(String line) {
         return line.substring(4, line.length() - 5);
+    }
+
+    public static void printList(List<Currency> result) {
+        for (int i = 0; i < result.size(); i++) {
+            System.out.println(result.get(i).GetInfo());
+        }
+    }
+
+    public static String ReturnStringList(List<Currency> result) {
+
+        StringBuilder sb = new StringBuilder("");
+        for (int i = 0; i < result.size(); i++) {
+            sb.append(result.get(i).GetInfo());
+        }
+        return sb.toString();
     }
 }
 
@@ -79,6 +90,6 @@ class Currency {
     }
 
     public String GetInfo() {
-        return (Name + "\n" + To_buy+ "\n" + To_sell);
+        return (Name + "\n" + To_buy + "\n" + To_sell + "\n");
     }
 }
